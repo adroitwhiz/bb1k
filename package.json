@@ -1,0 +1,15 @@
+{
+  "name": "bb1k",
+  "version": "1.0.0",
+  "description": "BBcode parser in <1kb minified JavaScript.",
+  "main": "bbcode-parser.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "minify": "terser --config-file terser-options.json -o bbcode-parser.min.js bbcode-parser.js"
+  },
+  "author": "https://github.com/adroitwhiz",
+  "license": "ISC",
+  "devDependencies": {
+    "terser": "^4.5.1"
+  }
+}

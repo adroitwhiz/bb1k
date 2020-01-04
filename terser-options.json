@@ -1,0 +1,10 @@
+{
+	"mangle": {
+		"toplevel": true,
+		"reserved": ["bbparse"]
+	},
+	"compress": {
+		"unsafe": true,
+		"ecma": 6
+	}
+}

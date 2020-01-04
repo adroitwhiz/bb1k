@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>BBcode parser test</title>
+		<script src="bbcode-parser.js"></script>
+	</head>
+	<body>
+		<div id="out"></div>
+
+		<script>
+			const out = document.getElementById("out");
+
+			out.appendChild(bbparse(`This is [i]a [b]test[/b][/i] testing string [i] correct [u]underlined?[/u] [/i]order [s]strike[/s]test [img]https://placekitten.com/200/300[/img]
+[url=https://www.google.com]Google[/url]
+[url]https://www.reddit.com[/url]
+[code]this is some code[/code]
+[ul]
+[li]this is a list element[/li]
+[*]Another list element!
+[*]Implicit end tags
+[/ul]
+[list]
+[*] This works too
+[/list]
+[ol]
+[*] Ordered lists
+[*] Also work
+[/ol]
+[color=red]this is [size=24]big[/size] red text[/color] and this is the end`));
+		</script>
+	</body>
+</html>

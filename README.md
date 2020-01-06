@@ -9,7 +9,7 @@ bbparse("This is [i]BBCode[/i]");
 ```
 
 ## Supported features
-Being only 1kb in side, bb1k only supports a subset of BBCode. The supported tags are:
+Being only 1kb in size, bb1k only supports a subset of BBCode. The supported tags are:
 - `[b]` (bold)
 - `[i]` (italics)
 - `[u]` (underline)

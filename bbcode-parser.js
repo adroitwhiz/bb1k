@@ -19,11 +19,12 @@ function bbparse(text) {
 
 	while (match = tagRegex.exec(text)) {
 		var tagName = match[3];
-		var textSlice = text.slice(lastLastIndex, tagRegex.lastIndex - tagName.length);
+		var lastIndex = tagRegex.lastIndex;
+		var textSlice = text.slice(lastLastIndex, lastIndex - tagName.length);
 		if (textSlice.length) {
 			switch ((elem.tagName || "").toLowerCase()) {
 				case "img": elem.src = textSlice; break;
-				case "a": elem.href = elem.href || textSlice;
+				case "a": elem.href = elem.href || textSlice; // note that this falls through!
 				default: elem.appendChild(d.createTextNode(textSlice));
 			}
 		}
@@ -35,7 +36,7 @@ function bbparse(text) {
 		} else {
 			tagName = tagName.slice(1).split("=");
 			if (tagName == "*") {
-				var newlineIndex = text.indexOf("\n", tagRegex.lastIndex);
+				var newlineIndex = text.indexOf("\n", lastIndex);
 				text = text.slice(0, newlineIndex) + "[/]" + text.slice(newlineIndex);
 				tagName[0] = "li";
 			}
@@ -62,6 +63,6 @@ function bbparse(text) {
 				}
 			}
 		}
-		lastLastIndex = tagRegex.lastIndex + 1;
+		lastLastIndex = lastIndex + 1;
 	}
 }

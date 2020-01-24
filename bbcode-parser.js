@@ -5,17 +5,18 @@ function bbparse(text) {
 
 	var d = document;
 	var dc = val => d.createElement(val);
-	text = text + "[/]";
 
 	var oneToOne = "b,i,s,u,img,code,pre,ul,ol,li".split(",");
 
 	var elem = dc("div");
-	elem.style.whiteSpace = "pre-wrap";
 
 	var stack = [elem];
 
 	var lastLastIndex = tagRegex.lastIndex = 0;
 	var match;
+
+	text = text + "[/]";
+	elem.style.whiteSpace = "pre-wrap";
 
 	while (match = tagRegex.exec(text)) {
 		var tagName = match[3];

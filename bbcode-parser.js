@@ -48,22 +48,18 @@ function bbparse(text) {
 			if (oneToOne.indexOf(tagName) + 1) {
 				elem = dc(tagName);
 			} else {
-				switch (tagName) {
-					case "url":
-						elem = dc("a");
-						if (tagVal) elem.href = tagVal;
-						break;
-					case "color":
-						elem = dc("span");
-						// This saves bytes once tagName is minified to 1 character.
-						// It's definitely safe because switch statements use strict equality,
-						// so this is always equivalent to `elem.style.color`.
-						elem.style[tagName] = tagVal;
-						break;
-					case "size":
-						elem = dc("span");
-						elem.style.fontSize = tagVal + "px";
-						break;
+				if (tagName == "url") {
+					elem = dc("a");
+					if (tagVal) elem.href = tagVal;
+				} else if (tagName == "color") {
+					elem = dc("span");
+					// This saves bytes once tagName is minified to 1 character.
+					// It's definitely safe because switch statements use strict equality,
+					// so this is always equivalent to `elem.style.color`.
+					elem.style[tagName] = tagVal;
+				} else if (tagName == "size") {
+					elem = dc("span");
+					elem.style.fontSize = tagVal + "px";
 				}
 			}
 		}

@@ -36,15 +36,15 @@ function bbparse(text) {
 			elem = popped;
 		} else {
 			tagName = tagName.slice(1).split("=");
+			var tagVal = tagName[1];
+			tagName = tagName[0];
 			if (tagName == "*") {
 				var newlineIndex = text.indexOf("\n", lastIndex);
 				text = text.slice(0, newlineIndex) + "[/]" + text.slice(newlineIndex);
-				tagName[0] = "li";
+				tagName = "li";
 			}
-			if (tagName == "list") tagName[0] = "ul";
+			if (tagName == "list") tagName = "ul";
 			stack.push(elem);
-			var tagVal = tagName[1];
-			tagName = tagName[0];
 			if (oneToOne.indexOf(tagName) + 1) {
 				elem = dc(tagName);
 			} else {

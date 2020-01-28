@@ -55,7 +55,10 @@ function bbparse(text) {
 						break;
 					case "color":
 						elem = dc("span");
-						elem.style.color = tagVal;
+						// This saves bytes once tagName is minified to 1 character.
+						// It's definitely safe because switch statements use strict equality,
+						// so this is always equivalent to `elem.style.color`.
+						elem.style[tagName] = tagVal;
 						break;
 					case "size":
 						elem = dc("span");

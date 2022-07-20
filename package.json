@@ -10,6 +10,6 @@
   "author": "https://github.com/adroitwhiz",
   "license": "ISC",
   "devDependencies": {
-    "terser": "^4.5.1"
+    "terser": "^4.8.1"
   }
 }
